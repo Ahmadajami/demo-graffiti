@@ -1,0 +1,52 @@
+@import '@fontsource/almarai';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	box-sizing: border-box;
+}
+body {
+	background-color: #e2e2e2;
+
+	background-size: cover;
+	font-family: 'Almarai', system-ui;
+
+	background-image: url('lib/assets/topography.svg');
+}
+
+@layer base {
+	* {
+		@apply box-border;
+	}
+}
+
+@keyframes flyin {
+	from {
+		transform: translateX(-200px);
+		opacity: 0; /* Optional: Fade in as it flies in */
+	}
+	to {
+		transform: translateX(0); /* Or any other desired final X position */
+		opacity: 1; /* Optional: Fully visible at the end */
+	}
+}
+
+.flyin-element {
+	/* Apply this class to the element you want to animate */
+	animation: flyin 1s ease-out forwards; /* Adjust duration and easing as needed */
+}
+::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+/* Target the scrollbar thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+	background-color: #a71580;
+}
+
+/* Optional: Target the overall scrollbar to remove the visual space */
+::-webkit-scrollbar {
+	width: 10px; /* Remove scrollbar space */
+	height: auto;
+}
