@@ -7,21 +7,23 @@
 
 	import Cards from '$lib/Cards.svelte';
 	import GridCard from '$lib/GridCard.svelte';
+	import CountUp from '$lib/components/CountUp.svelte';
+	import { inview } from 'svelte-inview';
+	let statview = $state(false);
 </script>
 
 <section class="relative overflow-hidden px-4 py-3 sm:px-6 lg:px-8">
 	<div class="container mx-auto">
 		<div class="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-			<div
-				class="order-2 flex h-full flex-col items-center text-center md:order-1 md:items-start md:text-left"
-			>
+			<div class="order-2 flex h-full flex-col items-start text-start md:order-1">
 				<div class="flex h-full w-full flex-col">
-					<div class="w-full">
+					<div class="flex w-full justify-center md:justify-start">
 						<img class="mb-0 max-h-[350px] max-w-full" src="Logo.png" alt="Graffiti Resin Logo" />
 					</div>
+
 					<div class=" p-2">
 						<BlureFade>
-							<h1 class="myshadow text-4xl font-bold tracking-tight lg:text-6xl rtl:text-start">
+							<h1 class="myshadow text-4xl font-bold tracking-tight lg:text-6xl">
 								{m.welcome()}<br />
 								{m.welcomeHeader()}
 							</h1>
@@ -30,7 +32,7 @@
 				</div>
 			</div>
 
-			<div class="order-1 md:order-2">
+			<div class="order-1">
 				<div class="relative z-10 max-w-full">
 					<Carousel />
 				</div>
@@ -45,7 +47,6 @@
 		{m.welcomeDesc()}
 	</p>
 </section>
-
 <section class="mt-12 flex flex-col px-4 py-20 lg:px-8">
 	<BlureFade delay={0.2}>
 		<h1 class="  myshadow ml-11 w-fit text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
@@ -58,7 +59,8 @@
 	</article>
 </section>
 
-<section class=" bg-[#a71580] py-20 text-white">
+<!--Gemenit veRSOIN IS dOWN-->
+<section id="intro" class=" bg-[#a71580] py-20 text-white">
 	<div class="container mx-auto px-4">
 		<h1 class="text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">
 			{m.service_header()}
@@ -84,8 +86,9 @@
 		</BlureFade>
 	</div>
 </section>
-<section class="my-24 p-10">
-	<div class="flex flex-col gap-8 md:h-64 md:flex-row-reverse">
+
+<section id="art" class="my-24 p-10">
+	<div class="flex flex-col gap-8 md:flex-row-reverse">
 		<div class="h-48 md:h-full md:basis-3/5">
 			<img
 				class="h-full w-full rounded-l-md object-cover drop-shadow-2xl"
@@ -112,7 +115,6 @@
 		</div>
 	</div>
 </section>
-
 <section class="hide-scroller my-8 overflow-x-auto pb-4">
 	<div class="flex flex-nowrap gap-4 px-4 sm:px-8">
 		{#each Array(20) as _, i}
@@ -161,7 +163,7 @@
 </section>
 <section>
 	<BlureFade delay={0.2}>
-		<h1 class="  myshadow w-fit text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+		<h1 class="  myshadow w-fit px-3 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
 			{m.partner()}<br />
 			<span class=" ms-9 text-left">
 				Graffiti Resin
@@ -175,6 +177,24 @@
 	</BlureFade>
 </section>
 
+<section
+	id="statics"
+	use:inview={{ rootMargin: '-50px', unobserveOnEnter: false }}
+	oninview_change={(event) => {
+		const { inView } = event.detail;
+		statview = inView;
+	}}
+>
+	<div class=" mx-auto w-full max-w-7xl p-4 py-16 md:py-24">
+		<h1
+			class=" font-heading myshadow my-5 px-3 text-center text-5xl font-bold tracking-tight drop-shadow-md md:text-6xl lg:text-7xl"
+		>
+			Graffiti<span>Goals</span> .
+		</h1>
+
+		<CountUp reloade={statview} />
+	</div>
+</section>
 <section id="contact"></section>
 
 <style>
