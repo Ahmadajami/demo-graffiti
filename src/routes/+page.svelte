@@ -26,6 +26,7 @@
 							<h1 class="myshadow text-4xl font-bold tracking-tight lg:text-6xl">
 								{m.welcome()}<br />
 								{m.welcomeHeader()}
+								<hr class=" mt-3 h-1 w-[80%] bg-[#a71580]" />
 							</h1>
 						</BlureFade>
 					</div>
@@ -42,7 +43,7 @@
 
 	<p
 		style="white-space: pre-line"
-		class="ltr:ml-18 container mx-auto mt-6 hyphens-auto text-wrap text-justify text-xl sm:mr-0 md:text-2xl ltr:w-full rtl:mr-0 rtl:w-full md:rtl:mr-11"
+		class="ltr:ml-18 container mx-auto mt-2 hyphens-auto text-wrap text-justify text-xl sm:mr-0 md:text-2xl ltr:w-full rtl:mr-0 rtl:w-full md:rtl:mr-11"
 	>
 		{m.welcomeDesc()}
 	</p>
@@ -51,10 +52,11 @@
 	<BlureFade delay={0.2}>
 		<h1 class="  myshadow ml-11 w-fit text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
 			{m.department()}<br />
+			<hr class=" my-2 h-1 w-full bg-[#a71580]" />
 		</h1>
 	</BlureFade>
 
-	<article class=" mt-8 h-96">
+	<article class=" mt-2 h-[38rem] w-full p-0 md:p-2">
 		<BentoGrid />
 	</article>
 </section>
@@ -67,12 +69,12 @@
 		</h1>
 		<br />
 		<h2
-			class=" w-fit text-ellipsis break-words text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl"
+			class="  w-fit text-ellipsis break-words text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl"
 		>
 			{m.service_body()}
 			<Hr
 				id="small"
-				borderColor="border-slate-600 "
+				borderColor="border-gray-500"
 				options={{
 					rootMargin: '-10px',
 					unobserveOnEnter: true

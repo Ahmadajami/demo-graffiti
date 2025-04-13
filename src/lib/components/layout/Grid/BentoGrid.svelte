@@ -129,20 +129,20 @@
 	let isInView: boolean = $state(false);
 </script>
 
-<div class="hidden h-full w-full items-center justify-center md:flex">
-	<div class="grid h-full w-full grid-cols-5 grid-rows-3 gap-4 rounded-lg p-2">
+<div class=" hidden h-full w-full items-center justify-center md:flex">
+	<div class="grid h-full w-full grid-cols-5 grid-rows-3 gap-4 p-2">
 		{#each items as item, index (item.id)}
 			{@const Icon = item.icon}
 			<a
 				in:fly|global={{ y: 50, x: 200, duration: index * 350, delay: 100, easing: cubicOut }}
 				href={item.href}
-				class={`relative col-span-${item.colSpan} row-span-${item.rowSpan} flex flex-col items-center justify-center overflow-hidden rounded-lg shadow-2xl ${item.className || ''} transition-all duration-300 ease-in hover:z-10 hover:scale-110`}
+				class={`relative col-span-${item.colSpan} row-span-${item.rowSpan} flex flex-col items-center justify-center overflow-hidden rounded-2xl  ${item.className || ''} transition-all duration-300 ease-in hover:z-10 hover:scale-110`}
 				style={item.backgroundImage
 					? `background-image: ${item.backgroundImage}; background-size: cover; background-position: ${item.backgroundPosition};`
 					: ''}
 			>
 				{#if item.backgroundImage}
-					<div class="absolute inset-0 bg-black/35 backdrop-blur-[2px]"></div>
+					<div class="ahmad absolute inset-0 backdrop-blur-[2px]"></div>
 				{/if}
 				<div
 					class="relative z-10 flex flex-col items-center justify-center p-4 text-white"
@@ -150,7 +150,7 @@
 				>
 					<Icon class="mb-2 h-8 w-8" />
 
-					<span class="text-sm font-semibold drop-shadow-2xl">{item.title}</span>
+					<span class="text-[2rem] drop-shadow-2xl">{item.title}</span>
 				</div>
 			</a>
 		{/each}
@@ -163,5 +163,8 @@
 	.hibo {
 		opacity: 0;
 		height: 0;
+	}
+	.ahmad {
+		background: radial-gradient(rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
 	}
 </style>
