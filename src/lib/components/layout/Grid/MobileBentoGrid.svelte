@@ -45,7 +45,7 @@
 			<a
 				in:fly|global={{ y: 50, x: 200, duration: index * 350, delay: 100, easing: cubicOut }}
 				href={item.href}
-				class={`relative col-span-${item.colSpan} row-span-${item.rowSpan} flex flex-col items-center justify-center overflow-hidden rounded-lg shadow-md ${item.className || ''} transition-transform ease-in-out hover:scale-110 `}
+				class={`relative col-span-${item.colSpan} row-span-${item.rowSpan} flex flex-col items-center justify-center overflow-hidden rounded-3xl shadow-md ${item.className || ''} transition-transform ease-in-out hover:scale-110 `}
 				style={item.backgroundImage
 					? `background-image: ${item.backgroundImage}; background-size: cover; background-position: center;`
 					: ''}

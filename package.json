@@ -48,7 +48,13 @@
 		"@fontsource/almarai": "^5.2.5",
 		"@inlang/plugin-m-function-matcher": "^2.0.9",
 		"@inlang/plugin-message-format": "^4.0.0",
+		"@types/jsdom": "^21.1.7",
+		"dompurify": "^3.2.5",
+		"jsdom": "^26.1.0",
+		"svelte-french-toast": "^2.0.0-alpha.0",
+		"nodemailer": "^6.10.1",
 		"svelte-inview": "^4.0.4",
-		"svelte-motion": "^0.12.2"
+		"svelte-motion": "^0.12.2",
+		"zod": "^3.24.3"
 	}
 }

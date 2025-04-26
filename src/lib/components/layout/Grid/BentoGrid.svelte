@@ -77,7 +77,7 @@
 			href: '#top',
 			colSpan: 2,
 			rowSpan: 1,
-			backgroundImage: 'url("bentogrid/sales.png")',
+			backgroundImage: 'url("bentogrid/sales.png") ',
 
 			backgroundPosition: 'center'
 		},
@@ -136,7 +136,7 @@
 			<a
 				in:fly|global={{ y: 50, x: 200, duration: index * 350, delay: 100, easing: cubicOut }}
 				href={item.href}
-				class={`relative col-span-${item.colSpan} row-span-${item.rowSpan} flex flex-col items-center justify-center overflow-hidden rounded-2xl  ${item.className || ''} transition-all duration-300 ease-in hover:z-10 hover:scale-110`}
+				class={`relative col-span-${item.colSpan} row-span-${item.rowSpan} flex  flex-col items-center justify-center overflow-hidden rounded-2xl  ${item.className || ''} transition-all duration-300 ease-in hover:z-10 hover:scale-110`}
 				style={item.backgroundImage
 					? `background-image: ${item.backgroundImage}; background-size: cover; background-position: ${item.backgroundPosition};`
 					: ''}

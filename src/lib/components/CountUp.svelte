@@ -43,12 +43,12 @@
 	<div class="w-20 border-t border-black lg:h-20 lg:w-1 lg:border-l lg:border-t-0"></div>
 {/snippet}
 <div
-	class="glass flex flex-col items-center justify-center gap-10 py-7 lg:flex-row"
+	class="glass flex flex-col items-center justify-center gap-10 p-8 py-7 lg:flex-row"
 	class:animate={reloade}
 >
 	<!-- Start -->
-	<div class="space-y-1">
-		<span class="  block text-center text-5xl font-bold text-black md:text-8xl"
+	<div class="space-y-1 rounded-2xl p-2">
+		<span class="  block text-center text-6xl font-bold text-black md:text-8xl"
 			>{squareMetersText}+</span
 		>
 		<p class="block"><strong>Projects</strong></p>
@@ -58,8 +58,8 @@
 	<!-- End -->
 
 	<!-- Start -->
-	<div class="space-y-1">
-		<span class="block text-center text-5xl font-bold md:text-8xl">{completedProjectsText}+</span>
+	<div class="space-y-1 rounded-2xl p-2">
+		<span class="block text-center text-6xl font-bold md:text-8xl">{completedProjectsText}+</span>
 		<p class="myshadow block"><strong>Artisit</strong></p>
 	</div>
 
@@ -67,23 +67,18 @@
 	<!--End -->
 
 	<!--Start -->
-	<div class="space-y-1">
-		<span class=" block text-center text-3xl font-bold md:text-8xl">
+	<div class="space-y-1 rounded-2xl p-2">
+		<span class=" block text-center text-6xl font-bold md:text-8xl">
 			{yearsInBusinessText}<span>yr</span>
 		</span>
+		<p class="myshadow block"><strong>Years </strong></p>
 	</div>
 	{@render divider()}
 	<!--End -->
 
 	<!--Start -->
-	<div class="space-y-1">
-		<span class=" block text-center text-5xl font-bold md:text-8xl">{squareMetersText}+</span>
-		<p class="myshadow block"><strong>Sales Points </strong></p>
-	</div>
-	{@render divider()}
-	<!--End -->
-	<div class="space-y-1">
-		<span class=" block text-center text-5xl font-bold md:text-8xl">{squareMetersText}+</span>
+	<div class="space-y-1 rounded-2xl p-2">
+		<span class=" block text-center text-6xl font-bold md:text-8xl">{squareMetersText}+</span>
 		<p class="myshadow block"><strong>Sales Points </strong></p>
 	</div>
 </div>

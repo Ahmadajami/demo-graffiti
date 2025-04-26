@@ -1,4 +1,5 @@
 <script lang="ts">
+	import toast from 'svelte-french-toast';
 	import Carousel from '$lib/components/Carousel.svelte';
 	import BlureFade from '$lib/BlureFade.svelte';
 	import Hr from '$lib/components/HR.svelte';
@@ -9,7 +10,23 @@
 	import GridCard from '$lib/GridCard.svelte';
 	import CountUp from '$lib/components/CountUp.svelte';
 	import { inview } from 'svelte-inview';
+	import ContactCarousel from '$lib/ContactCarousel.svelte';
+	import { enhance } from '$app/forms';
+	import { page } from '$app/state';
+	import type { PageProps } from './$types';
 	let statview = $state(false);
+	let loading = $state(false);
+
+	let { form }: PageProps = $props();
+	$effect(() => {
+		if (form) {
+			if (form?.success) {
+				toast.success('It works!');
+			} else {
+				toast.error('Something Went Wrong!');
+			}
+		}
+	});
 </script>
 
 <section class="relative overflow-hidden px-4 py-3 sm:px-6 lg:px-8">
@@ -56,7 +73,7 @@
 		</h1>
 	</BlureFade>
 
-	<article class=" mt-2 h-[38rem] w-full p-0 md:p-2">
+	<article class=" mt-2 h-[35rem] w-full p-0 md:p-2">
 		<BentoGrid />
 	</article>
 </section>
@@ -117,7 +134,7 @@
 		</div>
 	</div>
 </section>
-<section class="hide-scroller my-8 overflow-x-auto pb-4">
+<section class="hide-scroller my-8 overflow-x-auto p-10 pb-4">
 	<div class="flex flex-nowrap gap-4 px-4 sm:px-8">
 		{#each Array(20) as _, i}
 			<Cards />
@@ -137,13 +154,13 @@
 		</div>
 		<div class="self-center md:basis-2/5">
 			<!-- Removed self-center on mobile -->
-			<p class="px-2 text-3xl font-semibold md:text-4xl">
+			<p class="pl-10 text-3xl font-semibold md:text-4xl">
 				<!-- Responsive text size -->
 				{m.project_header()}<br />
 				{m.project_body()}
 			</p>
 
-			<hr class="mx-4 my-4 h-2 w-48 rounded-sm border-0 bg-blue-400 md:my-10" />
+			<hr class=" mx-4 my-4 h-2 w-48 rounded-sm border-0 bg-blue-400 pl-10 md:my-10" />
 		</div>
 	</div>
 </section>
@@ -151,13 +168,13 @@
 <article class=" my-9 px-4">
 	<!-- Added horizontal padding -->
 	<p
-		class=" text-bold my-8 mr-0 whitespace-pre-line text-pretty text-xl leading-loose tracking-tighter md:text-3xl"
+		class=" text-black-50/40 my-8 mr-0 whitespace-pre-line text-pretty p-2 text-xl font-thin leading-loose tracking-tighter drop-shadow-2xl md:text-3xl"
 	>
 		{m.project_section()}
 	</p>
 </article>
-<section class="my-10">
-	<div class="grid grid-cols-1 gap-4 text-center md:grid-cols-2">
+<section class="my-10 p-5">
+	<div class="grid grid-cols-1 gap-4 text-center sm:p-3 md:grid-cols-2">
 		{#each Array(10) as _, i}
 			<GridCard />
 		{/each}
@@ -189,15 +206,104 @@
 >
 	<div class=" mx-auto w-full max-w-7xl p-4 py-16 md:py-24">
 		<h1
-			class=" font-heading myshadow my-5 px-3 text-center text-5xl font-bold tracking-tight drop-shadow-md md:text-6xl lg:text-7xl"
+			class="font-heading myshadow my-5 w-fit px-3 text-start text-5xl font-bold tracking-tight drop-shadow-md md:text-6xl lg:text-7xl"
 		>
-			Graffiti<span>Goals</span> .
+			{m.goals()} .
+
+			<hr class=" my-2 h-2 w-full bg-blue-400" />
 		</h1>
 
 		<CountUp reloade={statview} />
 	</div>
 </section>
-<section id="contact"></section>
+
+<section id="contact" class="">
+	<div class=" flex-row-reverse overflow-hidden rounded-lg shadow-xl lg:flex">
+		<div class="flex w-full items-center justify-start p-8 lg:w-1/2 ltr:pr-0 rtl:pl-0">
+			<ContactCarousel />
+		</div>
+
+		<div class="w-full p-8 lg:w-1/2 lg:p-12">
+			<h2 class="mb-3 w-fit text-start text-3xl font-bold text-gray-800">
+				{m.contact()}
+				<hr class="ml-auto mt-2 block h-1 w-full bg-blue-400" />
+			</h2>
+			<p class="mb-8 whitespace-pre-line text-start text-gray-600">
+				{m.contact_desc()}
+			</p>
+
+			<form
+				action="#"
+				method="POST"
+				class="space-y-5"
+				use:enhance={() => {
+					loading = true;
+					return ({ update }) => {
+						update({ invalidateAll: false }).finally(async () => {
+							loading = false;
+						});
+					};
+				}}
+			>
+				<div class="relative">
+					<label for="email" class="sr-only">Your Email</label>
+					<input
+						type="email"
+						id="email"
+						name="email"
+						placeholder="Your Email"
+						class="w-full rounded-md border border-gray-200 py-3 pl-4 pr-12 text-start text-black placeholder-gray-500 hover:bg-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
+					/>
+				</div>
+				<p class="h-1 text-red-500">
+					{#if page.form?.validation?.email}
+						Wrong Email
+					{/if}
+				</p>
+				<div class="relative">
+					<label for="subject" class="sr-only">Your Subject</label>
+					<input
+						type="text"
+						id="subject"
+						name="subject"
+						placeholder="Your subject"
+						class="w-full rounded-md border border-gray-200 py-3 pl-4 pr-12 text-start text-black placeholder-gray-500 hover:bg-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
+					/>
+				</div>
+				<p class="h-1 text-red-500">
+					{#if page.form?.validation?.subject}
+						Wrong Subject
+					{/if}
+				</p>
+				<div class="relative">
+					<label for="message" class="sr-only">Your message</label>
+					<input
+						type="text"
+						id="message"
+						name="message"
+						placeholder="Your Message"
+						class="w-full rounded-md border border-gray-200 py-3 pl-4 pr-12 text-start text-black placeholder-gray-500 hover:bg-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
+					/>
+				</div>
+				<p class="h-1 text-red-500">
+					{#if page.form?.validation?.message}
+						Wrong Message
+					{/if}
+				</p>
+
+				<div>
+					<button
+						disabled={loading}
+						type="submit"
+						class="w-full rounded-md bg-blue-400 px-4 py-3 font-bold text-white transition duration-150 ease-in-out hover:bg-[#a71580] focus:outline-none focus:ring-2 focus:ring-[#a71580] focus:ring-offset-2"
+					>
+						Submit
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
 
 <style>
 	.myshadow {
