@@ -5,7 +5,7 @@ const config: Config = {
 	darkMode: ['class'],
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	safelist: ['dark'],
-	
+
 	theme: {
 		container: {
 			center: true,
@@ -85,6 +85,13 @@ const config: Config = {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'caret-blink': 'caret-blink 1.25s ease-out infinite'
 			}
+		},
+		screens: {
+			sm: '640px',
+			md: '768px',
+			lg: '980px',
+			xl: '1280px',
+			'2xl': '1536px'
 		}
 	},
 	plugins: [tailwindcssAnimate]

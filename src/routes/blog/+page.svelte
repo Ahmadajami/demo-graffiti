@@ -1,7 +1,5 @@
-<div class="relative mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 py-8 lg:grid-cols-3">
-	<!-- Sidebar: shown first on mobile, last on desktop -->
-	<aside class="order-1 space-y-8 lg:order-2">
-		<!-- Logo and About -->
+<div class="relative mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 py-8 md:grid-cols-3">
+	<aside class="order-1 space-y-8 md:order-2">
 		<div class="text-center">
 			<img src="../Logo.png" alt="Graffiti Resin Logo" class="mx-auto mb-4 h-auto w-40" />
 			<div class="mx-auto my-4 h-32 w-32 rounded-full bg-black"></div>
@@ -11,7 +9,6 @@
 			</p>
 		</div>
 
-		<!-- Follow Us -->
 		<div>
 			<h3 class="mb-2 font-semibold">Follow Us</h3>
 			<ul class="space-y-2">
@@ -33,7 +30,6 @@
 			</ul>
 		</div>
 
-		<!-- Widgets -->
 		<div>
 			<h3 class="mb-2 font-semibold">Recent Posts</h3>
 			<div class="h-24 w-full bg-gray-300"></div>
@@ -50,15 +46,13 @@
 		</div>
 	</aside>
 
-	<!-- Main Content/Post Section: shown second on mobile, first on desktop -->
-	<div class="order-2 lg:order-1 lg:col-span-2">
+	<div class="order-2 md:order-1 md:col-span-2">
 		<h2 class="mb-4 text-sm text-gray-600">HOME / BLOG</h2>
 
 		<div class="mb-8 w-full overflow-hidden rounded-md">
 			<img src="../art/art.jpg" alt="art gallery" class="h-auto w-full object-cover" />
 		</div>
 
-		<!-- Recent Posts -->
 		<h3 class="mb-6 text-2xl font-bold">Recent Posts</h3>
 
 		<div class="space-y-8">
