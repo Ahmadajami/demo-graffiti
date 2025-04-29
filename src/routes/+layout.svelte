@@ -1,16 +1,17 @@
 <script lang="ts">
 	import '../app.css';
-
 	import { Toaster } from 'svelte-french-toast';
 	import Navbar from '$lib/components/layout/Navbar.svelte';
 	import { locales, localizeHref } from '$lib/paraglide/runtime';
 	import { page } from '$app/state';
 
 	let { children } = $props();
+	let x = $state('30%');
 </script>
 
 <Toaster />
 <Navbar />
+
 <main>
 	{@render children()}
 </main>

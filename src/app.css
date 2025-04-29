@@ -1,4 +1,8 @@
-@import '@fontsource/almarai';
+@import '@fontsource/almarai/300.css';
+@import '@fontsource/almarai/400.css';
+@import '@fontsource/almarai/700.css';
+@import '@fontsource/almarai/800.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,11 +12,11 @@
 }
 body {
 	background-color: #e2e2e2;
-
 	background-size: cover;
-	font-family: 'Almarai', system-ui;
-
+	background-repeat: repeat-y;
 	background-image: url('lib/assets/topography.svg');
+
+	font-family: 'Almarai', sans-serif;
 }
 
 @layer base {

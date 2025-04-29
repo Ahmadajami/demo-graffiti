@@ -1,7 +1,7 @@
-<div class="w-64 flex-shrink-0 sm:w-72 md:w-56 lg:w-64">
+<div class=" mx-10 w-64 flex-shrink-0 sm:w-72 md:mx-0 md:w-56 lg:w-[18rem]">
 	<!-- Responsive widths -->
 	<div class="my-4 rounded-2xl border bg-gray-600/60">
-		<a href="#top" class="block aspect-[4/3] overflow-hidden">
+		<a href="#top" class="block aspect-square overflow-hidden">
 			<!-- Changed from aspect-square to aspect-video (16:9) -->
 			<img
 				class="h-full w-full rounded-t-2xl object-cover"
@@ -19,7 +19,7 @@
 					Noteworthy technology
 				</h5>
 			</a>
-			<p class="text-center text-xl font-normal text-white sm:text-sm">
+			<p class="p-2 text-center text-white sm:text-sm">
 				<!-- Smaller text -->
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis facilis illum natus! Consequatur
 				perferendis eius sequi repellendus alias quia tempore ut vel soluta doloribus, in, unde voluptatem.

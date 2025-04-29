@@ -29,7 +29,7 @@
 	});
 </script>
 
-<section class="relative overflow-hidden px-4 py-3 sm:px-6 lg:px-8">
+<section id="Hero" class="relative overflow-hidden px-4 py-3 sm:px-6 lg:px-8">
 	<div class="container mx-auto">
 		<div class="grid items-center gap-12 md:grid-cols-2 md:gap-16">
 			<div class="order-2 flex h-full flex-col items-start text-start md:order-1">
@@ -65,6 +65,7 @@
 		{m.welcomeDesc()}
 	</p>
 </section>
+<!--Bento Grid -->
 <section class="mt-12 flex flex-col px-4 py-20 lg:px-8">
 	<BlureFade delay={0.2}>
 		<h1 class="  myshadow ml-11 w-fit text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
@@ -78,7 +79,7 @@
 	</article>
 </section>
 
-<!--Gemenit veRSOIN IS dOWN-->
+<!--Intro-->
 <section id="intro" class=" bg-[#a71580] py-20 text-white">
 	<div class="container mx-auto px-4">
 		<h1 class="text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">
@@ -106,35 +107,39 @@
 	</div>
 </section>
 
-<section id="art" class="my-24 p-10">
-	<div class="flex flex-col gap-8 md:flex-row-reverse">
-		<div class="h-48 md:h-full md:basis-3/5">
+<!--Art Section-->
+<section id="art" class="my-24 md:h-[30rem]">
+	<div class="flex h-full flex-col gap-8 p-3 md:flex-row-reverse">
+		<div class="py-2 shadow-teal-700 drop-shadow-2xl md:h-full md:basis-3/5">
 			<img
 				class="h-full w-full rounded-l-md object-cover drop-shadow-2xl"
 				src="art/art.jpg"
 				alt="resin Project"
 			/>
 		</div>
-		<div class=" mx-2 self-center md:basis-2/5">
-			<BlureFade>
-				<h1 class="px-2 text-3xl font-semibold md:text-4xl">
+
+		<div class="mx-4 self-center break-words md:basis-2/5">
+			<div class="container max-w-full p-8">
+				<h1 class="px-2 text-3xl font-semibold md:text-5xl">
 					{m.art_header()}
 				</h1>
 				<h2
-					class=" w-fit text-2xl font-semibold tracking-wide sm:text-3xl md:tracking-tight lg:text-4xl"
+					class="w-fit text-2xl font-semibold tracking-wide sm:text-3xl md:tracking-tight lg:text-4xl"
 				>
 					{m.art_body()}
-
 					<hr class="mx-2 h-2 w-full rounded-sm border-0 bg-blue-400 md:my-10" />
 				</h2>
-				<p class="text-bold my-6 text-pretty text-xl md:my-8 md:text-2xl">
+				<p
+					class="text-bold my-6 line-clamp-6 text-pretty text-xl transition-all duration-500 hover:line-clamp-none hover:max-h-[500px] md:my-8 md:text-2xl"
+				>
 					{m.art_desc()}
 				</p>
-			</BlureFade>
+			</div>
 		</div>
 	</div>
 </section>
-<section class="hide-scroller my-8 overflow-x-auto p-10 pb-4">
+
+<section class="hide-scroller my-8 overflow-x-auto p-5 pb-4">
 	<div class="flex flex-nowrap gap-4 px-4 sm:px-8">
 		{#each Array(20) as _, i}
 			<Cards />
@@ -142,19 +147,17 @@
 	</div>
 </section>
 <section class="my-20">
-	<div class="flex flex-col gap-8 md:h-64 md:flex-row-reverse">
-		<!-- Removed fixed height on mobile -->
-		<div class="h-48 md:h-full md:basis-3/5">
-			<!-- Added responsive height -->
+	<div class="flex flex-col gap-8 md:h-[20rem] md:flex-row-reverse">
+		<div class="h-48 drop-shadow-2xl md:h-full md:basis-3/5">
 			<img
 				class="h-full w-full rounded-l-md object-cover drop-shadow-2xl"
 				src="/art/art_second.png"
 				alt="resin Project"
 			/>
 		</div>
-		<div class="self-center md:basis-2/5">
+		<div class="container mx-auto self-center md:basis-2/5">
 			<!-- Removed self-center on mobile -->
-			<p class="pl-10 text-3xl font-semibold md:text-4xl">
+			<p class=" whitespace-pre-line text-4xl font-bold md:text-6xl">
 				<!-- Responsive text size -->
 				{m.project_header()}<br />
 				{m.project_body()}
@@ -165,14 +168,15 @@
 	</div>
 </section>
 
+<!--Project Section-->
 <article class=" my-9 px-4">
-	<!-- Added horizontal padding -->
 	<p
 		class=" text-black-50/40 my-8 mr-0 whitespace-pre-line text-pretty p-2 text-xl font-thin leading-loose tracking-tighter drop-shadow-2xl md:text-3xl"
 	>
 		{m.project_section()}
 	</p>
 </article>
+<!--Blog/Old Project  Sectoin -->
 <section class="my-10 p-5">
 	<div class="grid grid-cols-1 gap-4 text-center sm:p-3 md:grid-cols-2">
 		{#each Array(10) as _, i}
@@ -180,6 +184,8 @@
 		{/each}
 	</div>
 </section>
+
+<!--Partners Secttion-->
 <section>
 	<BlureFade delay={0.2}>
 		<h1 class="  myshadow w-fit px-3 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
@@ -196,6 +202,7 @@
 	</BlureFade>
 </section>
 
+<!--Statics Section-->
 <section
 	id="statics"
 	use:inview={{ rootMargin: '-50px', unobserveOnEnter: false }}
@@ -217,6 +224,7 @@
 	</div>
 </section>
 
+<!--Contact Section-->
 <section id="contact" class="">
 	<div class=" flex-row-reverse overflow-hidden rounded-lg shadow-xl lg:flex">
 		<div class="flex w-full items-center justify-start p-8 lg:w-1/2 ltr:pr-0 rtl:pl-0">
