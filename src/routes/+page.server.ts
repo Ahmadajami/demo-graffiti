@@ -39,7 +39,7 @@ const contactUsSchema = z
 	})
 	.strict();
 
-export const actions = {
+export const actions: Actions = {
 	default: async ({ request }) => {
 		const data = Object.fromEntries(await request.formData());
 		console.log(data);
@@ -73,4 +73,4 @@ export const actions = {
 
 		return { success: true, message: 'Message sent successfully!' };
 	}
-} satisfies Actions;
+};

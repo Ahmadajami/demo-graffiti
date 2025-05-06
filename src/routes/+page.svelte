@@ -5,6 +5,10 @@
 	import Hr from '$lib/components/HR.svelte';
 	import BentoGrid from '$lib/components/layout/Grid/BentoGrid.svelte';
 	import { m } from '$lib/paraglide/messages';
+	import art from '$lib/assets/images/art.jpg';
+	import logo from '$lib/assets/images/Logo.png';
+	import art_second from '$lib/assets/images/art_second.png';
+	import partners from '$lib/assets/images/partners.png';
 
 	import Cards from '$lib/Cards.svelte';
 	import GridCard from '$lib/GridCard.svelte';
@@ -14,6 +18,7 @@
 	import { enhance } from '$app/forms';
 	import { page } from '$app/state';
 	import type { PageProps } from './$types';
+	import Faq from '$lib/components/Faq.svelte';
 	let statview = $state(false);
 	let loading = $state(false);
 
@@ -35,7 +40,7 @@
 			<div class="order-2 flex h-full flex-col items-start text-start md:order-1">
 				<div class="flex h-full w-full flex-col">
 					<div class="flex w-full justify-center md:justify-start">
-						<img class="mb-0 max-h-[350px] max-w-full" src="Logo.png" alt="Graffiti Resin Logo" />
+						<img class="mb-0 max-h-[350px] max-w-full" src={logo} alt="Graffiti Resin Logo" />
 					</div>
 
 					<div class=" p-2">
@@ -67,18 +72,18 @@
 </section>
 <!--Bento Grid -->
 <section class="mt-12 flex flex-col px-4 py-20 lg:px-8">
-	<BlureFade delay={0.2}>
-		<h1 class="  myshadow ml-11 w-fit text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-			{m.department()}<br />
-			<hr class=" my-2 h-1 w-full bg-[#a71580]" />
-		</h1>
-	</BlureFade>
+	<article class="h-[780px] p-20">
+		<BlureFade delay={0.2}>
+			<h1 class="  myshadow ml-11 w-fit text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+				{m.department()}<br />
+				<hr class=" my-2 h-1 w-full bg-[#a71580]" />
+			</h1>
+		</BlureFade>
 
-	<article class=" mt-2 h-[35rem] w-full p-0 md:p-2">
 		<BentoGrid />
 	</article>
 </section>
-
+<!--mt-2 h-[35rem] w-full p-0 md:p-2 -->
 <!--Intro-->
 <section id="intro" class=" bg-[#a71580] py-20 text-white">
 	<div class="container mx-auto px-4">
@@ -112,8 +117,8 @@
 	<div class="flex h-full flex-col gap-8 p-3 md:flex-row-reverse">
 		<div class="py-2 shadow-teal-700 drop-shadow-2xl md:h-full md:basis-3/5">
 			<img
-				class="h-full w-full rounded-l-md object-cover drop-shadow-2xl"
-				src="art/art.jpg"
+				class="h-full w-full rounded-l-3xl object-cover drop-shadow-2xl"
+				src={art}
 				alt="resin Project"
 			/>
 		</div>
@@ -151,7 +156,7 @@
 		<div class="h-48 drop-shadow-2xl md:h-full md:basis-3/5">
 			<img
 				class="h-full w-full rounded-l-md object-cover drop-shadow-2xl"
-				src="/art/art_second.png"
+				src={art_second}
 				alt="resin Project"
 			/>
 		</div>
@@ -178,7 +183,7 @@
 </article>
 <!--Blog/Old Project  Sectoin -->
 <section class="my-10 p-5">
-	<div class="grid grid-cols-1 gap-4 text-center sm:p-3 md:grid-cols-2">
+	<div class="grid grid-cols-1 gap-8 text-center sm:p-3 md:grid-cols-2">
 		{#each Array(10) as _, i}
 			<GridCard />
 		{/each}
@@ -197,7 +202,7 @@
 		</h1>
 
 		<figure class="container mx-auto my-6">
-			<img src="partners.png" alt="our Parnters" loading="lazy" />
+			<img src={partners} alt="our Parnters" loading="lazy" />
 		</figure>
 	</BlureFade>
 </section>
@@ -224,6 +229,10 @@
 	</div>
 </section>
 
+<section class="my-4">
+	<Faq />
+</section>
+
 <!--Contact Section-->
 <section id="contact" class="">
 	<div class=" flex-row-reverse overflow-hidden rounded-lg shadow-xl lg:flex">
@@ -232,7 +241,7 @@
 		</div>
 
 		<div class="w-full p-8 lg:w-1/2 lg:p-12">
-			<h2 class="mb-3 w-fit text-start text-3xl font-bold text-gray-800">
+			<h2 class="myshadow font-heading mb-3 w-fit text-start text-3xl font-bold md:text-5xl">
 				{m.contact()}
 				<hr class="ml-auto mt-2 block h-1 w-full bg-blue-400" />
 			</h2>

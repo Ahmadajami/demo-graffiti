@@ -6,13 +6,8 @@
 	import { fly } from 'svelte/transition';
 	import logo from '$lib/assets/images/Logo.png';
 	import art from '$lib/assets/images/art.jpg';
-	import { page } from '$app/state';
 
 	let { data }: PageProps = $props();
-	const myBreadcrumbs = [
-		{ label: 'Home', link: localizeHref('/') },
-		{ label: 'Blog', link: localizeHref('/blog') }
-	];
 </script>
 
 <div class="relative mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 py-8 md:grid-cols-3">
@@ -68,26 +63,31 @@
 		</div>
 
 		<div>
-			<h3 class="mb-2 font-semibold">Recent Posts</h3>
+			<h3 class="mb-2 font-semibold">Recent Project</h3>
 			<div class="z-0 h-24 w-full bg-gray-300 transition-all hover:z-10 hover:scale-110">
-				{#await data.RecentPosts}
+				{#await data.RecentProjects}
 					Sekeleton Loading
-				{:then post}
-					<a href={localizeHref(`/blog/${post.id}`)} class=" no-underline hover:no-underline">
+				{:then project}
+					<a
+						href={localizeHref(`/projects/${project.slug}`)}
+						class=" no-underline hover:no-underline"
+					>
 						<article class=" flex flex-row space-x-4 space-y-0" in:fly|global={{ y: -200 }}>
 							<div class="h-24 flex-shrink-0 sm:w-32">
 								<img
 									class="h-full w-full"
-									src="http://127.0.0.1:8090/api/files/{post.collectionId}/{post.id}/{post.image}"
+									src="http://127.0.0.1:8090/api/files/{project.collectionId}/{project.id}/{project.images.at(
+										0
+									)}"
 									alt="post"
 								/>
 							</div>
 							<div>
 								<h4 class="font-semibold rtl:mx-2">
-									{getLocale() === 'ar' ? post.title_ar : post.title}
+									{getLocale() === 'ar' ? project.title_ar : project.title}
 								</h4>
 								<p class="mb-2 line-clamp-2 text-lg text-gray-500 rtl:mx-2">
-									{@html getLocale() === 'ar' ? post.desc_ar : post.desc}
+									{@html getLocale() === 'ar' ? project.desc_ar : project.desc}
 								</p>
 							</div>
 						</article>
@@ -110,19 +110,7 @@
 	</aside>
 
 	<div class="order-2 md:order-1 md:col-span-2">
-		<ol class="my-2 flex flex-row space-x-2">
-			{#each myBreadcrumbs as crumb, i}
-				<!-- If crumb index is less than the breadcrumb length minus 1 -->
-				{#if i < myBreadcrumbs.length - 1}
-					<li>
-						<a href={crumb.link}>{crumb.label}</a>
-					</li>
-					<li>/</li>
-				{:else}
-					<li>{crumb.label}</li>
-				{/if}
-			{/each}
-		</ol>
+		<h2 class="mb-4 text-sm text-gray-600">HOME / BLOG</h2>
 
 		<div class="mb-8 w-full overflow-hidden rounded-md">
 			<img src={art} alt="art gallery" class="h-auto w-full object-cover" />
@@ -131,10 +119,10 @@
 		<h3 class="mb-6 text-2xl font-bold">Posts</h3>
 
 		<div class="space-y-8">
-			{#await data.getPosts}
+			{#await data.getProjects}
 				Sekeleton Loading
-			{:then posts}
-				{#each posts as post, i (post.id)}
+			{:then project}
+				{#each project as project, i (project.id)}
 					<article
 						class="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
 						in:fly|global={{ x: -200 }}
@@ -142,18 +130,20 @@
 						<div class="h-24 w-full flex-shrink-0 sm:w-32">
 							<img
 								class="h-full w-full"
-								src="http://127.0.0.1:8090/api/files/{post.collectionId}/{post.id}/{post.image}"
+								src="http://127.0.0.1:8090/api/files/{project.collectionId}/{project.id}/{project.images.at(
+									0
+								)}"
 								alt="post"
 							/>
 						</div>
 						<div>
 							<h4 class="font-semibold rtl:mx-2">
-								{i + 1} &nbsp; {getLocale() === 'ar' ? post.title_ar : post.title}
+								{i + 1} &nbsp; {getLocale() === 'ar' ? project.title_ar : project.title}
 							</h4>
 							<p class="mb-2 line-clamp-3 text-lg text-gray-500 rtl:mx-2">
-								{@html getLocale() === 'ar' ? post.desc_ar : post.desc}
+								{@html getLocale() === 'ar' ? project.desc_ar : project.desc}
 							</p>
-							<a href={localizeHref(`/blog/${post.slug}`)} class="text-sm text-blue-500"
+							<a href={localizeHref(`/projects/${project.slug}`)} class="text-sm text-blue-500"
 								>{m.awful_fair_ibex_pause()}</a
 							>
 						</div>

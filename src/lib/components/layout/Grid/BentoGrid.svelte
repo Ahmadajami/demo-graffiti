@@ -15,6 +15,16 @@
 	import { fly, scale } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import MobileBentoGrid from './MobileBentoGrid.svelte';
+	import bento from '$lib/assets/images/shop.jpg';
+	import partner from '$lib/assets/images/partner.jpg';
+	import projects from '$lib/assets/images/projects.jpg';
+
+	import aboutus from '$lib/assets/images/aboutus.png';
+	import sales from '$lib/assets/images/sales.png';
+	import products from '$lib/assets/images/products.jpg';
+	import flooring from '$lib/assets/images/flooring.png';
+	import blogs from '$lib/assets/images/blogs.jpg';
+	import creating from '$lib/assets/images/creating.jpg';
 
 	interface GridItem {
 		id: string;
@@ -35,7 +45,7 @@
 			href: '#top',
 			colSpan: 1,
 			rowSpan: 3,
-			backgroundImage: 'url("bentogrid/shop.jpg")',
+			backgroundImage: `url(${bento})`,
 
 			backgroundPosition: 'center'
 		},
@@ -46,7 +56,7 @@
 			href: '#top',
 			colSpan: 1,
 			rowSpan: 1,
-			backgroundImage: 'url("bentogrid/partner.jpg")',
+			backgroundImage: `url(${partner})`,
 
 			backgroundPosition: 'center'
 		},
@@ -57,7 +67,7 @@
 			href: '#top',
 			colSpan: 1,
 			rowSpan: 1,
-			backgroundImage: 'url("bentogrid/projects.jpg")',
+			backgroundImage: `url(${projects})`,
 			backgroundPosition: 'center'
 		},
 		{
@@ -67,7 +77,7 @@
 			href: '#top',
 			colSpan: 2,
 			rowSpan: 1,
-			backgroundImage: 'url("bentogrid/aboutus.png")',
+			backgroundImage: `url(${aboutus})`,
 			backgroundPosition: 'top'
 		},
 		{
@@ -77,7 +87,7 @@
 			href: '#top',
 			colSpan: 2,
 			rowSpan: 1,
-			backgroundImage: 'url("bentogrid/sales.png") ',
+			backgroundImage: `url(${sales})`,
 
 			backgroundPosition: 'center'
 		},
@@ -88,7 +98,7 @@
 			href: '#top',
 			colSpan: 1,
 			rowSpan: 1,
-			backgroundImage: 'url("bentogrid/products.jpg")',
+			backgroundImage: `url(${products})`,
 
 			backgroundPosition: 'center'
 		},
@@ -99,7 +109,7 @@
 			href: '#top',
 			colSpan: 1,
 			rowSpan: 1,
-			backgroundImage: 'url("bentogrid/flooring.png")',
+			backgroundImage: `url(${flooring})`,
 			backgroundPosition: 'center'
 		},
 		{
@@ -109,7 +119,7 @@
 			href: '#top',
 			colSpan: 2,
 			rowSpan: 1,
-			backgroundImage: 'url("bentogrid/blogs.jpg")',
+			backgroundImage: `url(${blogs})`,
 
 			backgroundPosition: 'left bottom'
 		},
@@ -120,7 +130,7 @@
 			href: '#top',
 			colSpan: 2,
 			rowSpan: 1,
-			backgroundImage: 'url("bentogrid/creating.jpg")',
+			backgroundImage: `url(${creating})`,
 
 			backgroundPosition: 'center'
 		}
@@ -130,13 +140,13 @@
 </script>
 
 <div class=" hidden h-full w-full items-center justify-center md:flex">
-	<div class="grid h-full w-full grid-cols-5 grid-rows-3 gap-4 p-2">
+	<div class="grid aspect-square h-full w-full grid-cols-5 grid-rows-3 gap-4 p-2">
 		{#each items as item, index (item.id)}
 			{@const Icon = item.icon}
 			<a
 				in:fly|global={{ y: 50, x: 200, duration: index * 350, delay: 100, easing: cubicOut }}
 				href={item.href}
-				class={`relative col-span-${item.colSpan} row-span-${item.rowSpan} flex  flex-col items-center justify-center overflow-hidden rounded-2xl  ${item.className || ''} transition-all duration-300 ease-in hover:z-10 hover:scale-110`}
+				class={` relative col-span-${item.colSpan} row-span-${item.rowSpan} flex  flex-col items-center justify-center overflow-hidden rounded-2xl  ${item.className || ''} transition-all  ease-in hover:z-10 hover:scale-110`}
 				style={item.backgroundImage
 					? `background-image: ${item.backgroundImage}; background-size: cover; background-position: ${item.backgroundPosition};`
 					: ''}
@@ -148,9 +158,9 @@
 					class="relative z-10 flex flex-col items-center justify-center p-4 text-white"
 					in:scale|global={{ duration: index * 250, delay: 400, easing: cubicOut }}
 				>
-					<Icon class="mb-2 h-8 w-8" />
+					<Icon class="mb-2 h-10 w-10" />
 
-					<span class="text-[2rem] drop-shadow-2xl">{item.title}</span>
+					<span class="text-xl drop-shadow-2xl">{item.title}</span>
 				</div>
 			</a>
 		{/each}

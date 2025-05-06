@@ -1,132 +1,44 @@
 <script>
 	import { m } from './paraglide/messages';
+	import gridcard from '$lib/assets/images/gridcard.jpg';
 </script>
 
-<div class="card">
-	<div class="header mx-3">
-		<!-- Text Container -->
-		<div class="title-container">
-			<h1 class="title">
-				<span class="main-title">
-					{m.title_card()}
-				</span>
-				<hr class="  my-3 h-1 w-full rounded-sm border-0 bg-[#a71580b2]" />
-			</h1>
+<div class="flex w-full max-w-3xl flex-col space-y-3 rounded-2xl bg-white p-4 shadow-lg md:p-8">
+	<div class="flex flex-col space-y-4 md:flex-row md:space-x-8 md:space-y-0">
+		<!-- Image -->
+		<div class="flex h-24 w-full items-center justify-center md:h-24 md:basis-[60%] rtl:ml-3">
+			<img
+				src={gridcard}
+				alt="Epoxy flooring illustration"
+				class="h-full w-full rounded-2xl object-cover"
+			/>
 		</div>
-
-		<!-- Image Container -->
-		<div class="image-container rounded-lg bg-black">
-			<img src="art/gridcard.jpg" alt="Epoxy flooring illustration" class="header-image" />
+		<!-- Title -->
+		<div class="mx-0 flex-1 md:basis-[40%]">
+			<h2
+				class="my-2 text-wrap text-start text-lg font-bold tracking-wider text-gray-800 md:text-lg"
+			>
+				{m.title_card()}
+			</h2>
+			<hr class="mb-6 h-1 w-full bg-[#a71580b2]" />
 		</div>
 	</div>
 
-	<ul class="features">
-		<li>
-			{m.card_list()}
-		</li>
-		<li>
-			{m.card_list_second()}
-		</li>
-	</ul>
+	<!-- List -->
+	<div class="flex-1">
+		<ul class="space-y-3 text-sm text-gray-600 md:text-base">
+			<li class="flex items-start">
+				<span class=" mr-2 text-xl font-bold text-[#a71580b2] rtl:ml-2 rtl:mr-0">&#8226;</span>
+				<span class="line-clamp-1">
+					{m.card_list()}
+				</span>
+			</li>
+			<li class="flex items-start">
+				<span class="mr-2 text-xl font-bold text-[#a71580b2] rtl:ml-2 rtl:mr-0">&#8226;</span>
+				<span>
+					{m.card_list_second()}
+				</span>
+			</li>
+		</ul>
+	</div>
 </div>
-
-<style>
-	.card {
-		background-color: #fff;
-		border-radius: 12px;
-		padding: 1.5rem;
-		max-width: 700px;
-		margin: 1rem auto;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	}
-
-	.header {
-		display: flex;
-		gap: 1.5rem;
-	}
-
-	.title-container,
-	.image-container {
-		flex: 0 0 50%;
-		box-sizing: border-box;
-		height: 100%;
-	}
-
-	.title-container {
-		min-width: 0;
-		padding-left: 1rem;
-	}
-
-	.main-title {
-		display: block;
-		color: #2d3748;
-		font-size: 1.5rem;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		text-align: right;
-		white-space: wrap;
-	}
-
-	.image-container {
-		height: 100px;
-		position: relative;
-	}
-
-	.header-image {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		border-radius: 10px;
-	}
-	.features {
-		list-style-type: none;
-		padding: 0;
-		margin: 0;
-	}
-
-	.features li {
-		white-space: wrap;
-		min-width: 0;
-		position: relative;
-		padding-right: 0.9rem;
-		margin-bottom: 1rem;
-		color: #4a5568;
-		line-height: 1.6;
-		font-size: 0.9rem;
-		text-align: start;
-		text-overflow: ellipsis;
-	}
-
-	.features li:before {
-		content: '•';
-		color: #a71580;
-		position: absolute;
-		right: 0;
-		padding-left: 4px;
-		font-size: 22px;
-		right: 0.2rem;
-		top: 50%;
-		transform: Scale(1.5) translateY(-50%);
-		line-height: 1;
-	}
-
-	@media (max-width: 640px) {
-		.header {
-			flex-direction: column;
-		}
-
-		.title-container,
-		.image-container {
-			flex: 0 0 100%;
-			width: 100%;
-		}
-
-		.image-container {
-			height: 200px;
-		}
-
-		.title-container {
-			padding-left: 0;
-		}
-	}
-</style>

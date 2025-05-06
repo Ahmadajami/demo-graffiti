@@ -24,6 +24,9 @@ body {
 		@apply box-border;
 	}
 }
+.myshadow {
+	text-shadow: 2px 2px #a715805b;
+}
 
 @keyframes flyin {
 	from {

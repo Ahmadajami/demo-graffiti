@@ -6,7 +6,7 @@
 		'https://picsum.photos/400?random=3'
 	];
 
-	let interval: number | undefined = $state<number>();
+	let interval: NodeJS.Timeout | undefined = $state<NodeJS.Timeout>();
 
 	$effect(() => {
 		interval = setInterval(() => {
@@ -23,7 +23,7 @@
 		<img
 			src={image}
 			alt="Carousel"
-			class="carousel-item h-full w-full object-cover ltr:rounded-l-2xl rtl:rounded-r-2xl"
+			class="carousel-item h-full w-full object-cover transition-opacity ltr:rounded-l-2xl rtl:rounded-r-2xl"
 			class:active={index === currentIndex}
 		/>
 	{/each}
